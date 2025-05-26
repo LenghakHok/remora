@@ -8,7 +8,7 @@ export function State({ className, children, ...props }: StateRootProps) {
   return (
     <section
       className={cn(
-        "flex w-full flex-col items-center justify-center gap-4",
+        "flex w-full flex-col items-center justify-center gap-6",
         className,
       )}
       {...props}

@@ -1,15 +1,14 @@
-// pages/api/[...slugs].ts
-import { Elysia, t } from 'elysia'
+import { Elysia, t } from "elysia";
 
-const app = new Elysia({ prefix: '/api' }) 
-    .get('/', () => 'hi')
-    .post('/', ({ body }) => body, {
-        body: t.Object({
-            name: t.String()
-        })
-    })
+const app = new Elysia({ prefix: "/api" })
+  .get("/", () => "hi")
+  .post("/", ({ body }) => body, {
+    body: t.Object({
+      name: t.String(),
+    }),
+  });
 
-const handle = ({ request }: { request: Request }) => app.handle(request) 
+const handle = ({ request }: { request: Request }) => app.handle(request);
 
-export const GET = handle 
-export const POST = handle 
+export const GET = handle;
+export const POST = handle;
