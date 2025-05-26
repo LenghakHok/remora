@@ -3,10 +3,12 @@ services:
     image: 'postgres:17'
     container_name: remora_pg
     ports:
-      - 5432:5432
+      - 5433:5432
     volumes:
       - ./data/postgresql:/var/lib/postgresql/data:Z
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: remora # The PostgreSQL user (useful to connect to the database)
-      POSTGRES_PASSWORD: remora # The PostgreSQL password (useful to connect to the database)
-      POSTGRES_DB: remora # The PostgreSQL default database (automatically created at first launch)
+      POSTGRES_USER: ${POSTGRES_USER} # The PostgreSQL user (useful to connect to the database)
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # The PostgreSQL password (useful to connect to the database)
+      POSTGRES_DB: ${POSTGRES_DB} #
