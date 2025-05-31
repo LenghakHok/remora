@@ -1,12 +1,24 @@
-import { Elysia, t } from "elysia";
+import { auth, docs } from "@/core/lib/auth-server";
+import { swagger } from "@elysiajs/swagger";
+import { Elysia } from "elysia";
 
 const app = new Elysia({ prefix: "/api" })
-  .get("/", () => "hi")
-  .post("/", ({ body }) => body, {
-    body: t.Object({
-      name: t.String(),
+  .use(
+    swagger({
+      scalarConfig: {
+        theme: "moon",
+        spec: {
+          url: "/api/swagger/json",
+        },
+      },
+      autoDarkMode: true,
+      documentation: {
+        components: await docs.components,
+        paths: await docs.getPaths(),
+      },
     }),
-  });
+  )
+  .mount(auth.handler);
 
 const handle = ({ request }: { request: Request }) => app.handle(request);
 

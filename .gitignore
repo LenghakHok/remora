@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 .turbo
 .vercel
+
+data
