@@ -72,10 +72,6 @@ export default defineConfig({
         context: "server",
         url: true,
       }),
-      VALKEY_URL: envField.string({
-        access: "secret",
-        context: "server",
-      }),
 
       GITHUB_CLIENT_ID: envField.string({
         access: "secret",
@@ -100,11 +96,6 @@ export default defineConfig({
         context: "server",
       }),
       DISCORD_CLIENT_SECRET: envField.string({
-        access: "secret",
-        context: "server",
-      }),
-
-      RESEND_API_KEY: envField.string({
         access: "secret",
         context: "server",
       }),
