@@ -3,11 +3,11 @@ import RootLayout from "@/core/layouts/root-layout.astro";
 import { cn } from "@/core/lib/cn";
 import { buttonVariants } from "@/core/ui/button";
 import {
-State,
-StateActions,
-StateDescription,
-StateIcon,
-StateTitle,
+  State,
+  StateActions,
+  StateDescription,
+  StateIcon,
+  StateTitle,
 } from "@/core/ui/state";
 import { ArrowLeftIcon, UnplugIcon } from "lucide-react";
 
@@ -20,38 +20,42 @@ const { error } = Astro.props;
 
 <RootLayout>
   <State>
-      <StateIcon>
-        <UnplugIcon className="size-12" />
-      </StateIcon>
-      <StateTitle className="text-xl font-extrabold">
-        {error instanceof Error && error.message ? error.message : "Internal Server Error"}
-      </StateTitle>
-      <StateDescription>
-        There is a problem on our end. Stay tune! We are fixing this as soon as
-        possible.
-      </StateDescription>
-      <StateActions>
-        <a
-          class={cn(
-            buttonVariants({ variant: "default" }),
-            "font-bold uppercase",
-          )}
-          href="/"
-        >
-          <ArrowLeftIcon />
-          <span>Take me back</span>
-        </a>
+    <StateIcon>
+      <UnplugIcon className="size-12" />
+    </StateIcon>
+    <StateTitle className="text-xl font-extrabold">
+      {
+        error instanceof Error && error.message
+          ? error.message
+          : "Internal Server Error"
+      }
+    </StateTitle>
+    <StateDescription>
+      There is a problem on our end. Stay tune! We are fixing this as soon as
+      possible.
+    </StateDescription>
+    <StateActions>
+      <a
+        class={cn(
+          buttonVariants({ variant: "default", size: "lg" }),
+          "font-bold uppercase",
+        )}
+        href="/"
+      >
+        <ArrowLeftIcon />
+        <span>Take me back</span>
+      </a>
 
-        <a
-          class={cn(
-            buttonVariants({ variant: "outline" }),
-            "font-bold uppercase",
-          )}
-          href="/"
-        >
-          <ArrowLeftIcon />
-          <span>Report Bugs</span>
-        </a>
-      </StateActions>
-    </State>
+      <a
+        class={cn(
+          buttonVariants({ variant: "outline", size: "lg" }),
+          "font-bold uppercase",
+        )}
+        href="/"
+      >
+        <ArrowLeftIcon />
+        <span>Report Bugs</span>
+      </a>
+    </StateActions>
+  </State>
 </RootLayout>
