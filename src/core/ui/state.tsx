@@ -24,7 +24,7 @@ interface StateIconProps extends ComponentPropsWithRef<"div"> {}
 export function StateIcon({ className, children, ...props }: StateIconProps) {
   return (
     <div
-      className={cn("rounded-md border-2 border-dashed p-4", className)}
+      className={cn("rounded-3xl border-2 border-dashed p-4", className)}
       {...props}
     >
       {children}
