@@ -1,0 +1,16 @@
+---
+import { cn } from "@/core/lib/cn";
+import { CardFooter } from "@/core/ui/card";
+import type { ComponentPropsWithRef } from "react";
+
+type Props = ComponentPropsWithRef<typeof CardFooter> & {};
+
+const { className, ...props } = Astro.props;
+---
+
+<CardFooter
+  className={cn("flex items-center justify-center", className)}
+  {...props}
+>
+  <slot />
+</CardFooter>

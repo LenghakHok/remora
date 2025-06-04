@@ -1,4 +1,4 @@
-import { BrandIconDark, BrandIconLight } from "@/core/icons/brand";
+import { BrandIcon } from "@/core/icons/brand";
 import { cn } from "@/core/lib/cn";
 import { buttonVariants } from "@/core/ui/button";
 import type { ComponentPropsWithRef } from "react";
@@ -8,14 +8,13 @@ export function Logo({ className, ...props }: ComponentPropsWithRef<"a">) {
     <a
       className={cn(
         buttonVariants({ size: "icon", variant: "ghost" }),
-        "size-fit [&_svg:not([class*='size-'])]:size-12",
+        "size-fit rounded-xl [&_svg:not([class*='size-'])]:size-12",
         className,
       )}
       href="/"
       {...props}
     >
-      <BrandIconDark className="hidden dark:block" />
-      <BrandIconLight className="block dark:hidden" />
+      <BrandIcon />
       <span className="sr-only"> Logo </span>
     </a>
   );

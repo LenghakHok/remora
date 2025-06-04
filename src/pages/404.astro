@@ -1,40 +1,39 @@
 ---
+import { PlanetFill } from "@/core/icons/planet-fill";
 import RootLayout from "@/core/layouts/root-layout.astro";
 import { cn } from "@/core/lib/cn";
 import { buttonVariants } from "@/core/ui/button";
 import {
-State,
-StateActions,
-StateDescription,
-StateIcon,
-StateTitle,
+  State,
+  StateActions,
+  StateDescription,
+  StateIcon,
+  StateTitle,
 } from "@/core/ui/state";
-import { ArrowLeftIcon, SearchSlashIcon } from "lucide-react";
+import { ArrowLeftIcon } from "lucide-react";
 ---
 
 <RootLayout>
-    <State>
-      <StateIcon>
-        <SearchSlashIcon className="size-12" />
-      </StateIcon>
-      <StateTitle className="text-xl font-extrabold">
-        Page not Found
-      </StateTitle>
-      <StateDescription>
-        Looks like you have stumbled across a page that does not exist in our
-        universe.
-      </StateDescription>
-      <StateActions>
-        <a
-          class={cn(
-            buttonVariants({ variant: "default" }),
-            "font-bold uppercase",
-          )}
-          href="/"
-        >
-          <ArrowLeftIcon />
-          <span>Take me back</span>
-        </a>
-      </StateActions>
-    </State>
+  <State>
+    <StateIcon>
+      <PlanetFill className="text-primary size-12" />
+    </StateIcon>
+    <StateTitle className="text-xl font-extrabold"> Page not Found </StateTitle>
+    <StateDescription>
+      Looks like you have stumbled across a page that does not exist in our
+      universe.
+    </StateDescription>
+    <StateActions>
+      <a
+        class={cn(
+          buttonVariants({ variant: "default", size: "lg" }),
+          "font-bold uppercase px-4",
+        )}
+        href="/"
+      >
+        <ArrowLeftIcon />
+        <span>Take me back</span>
+      </a>
+    </StateActions>
+  </State>
 </RootLayout>

@@ -45,7 +45,7 @@ import { PUBLIC_APP_NAME } from "astro:env/client";
       rel="stylesheet"
     />
     <link
-      href="/svg/favicon.svg"
+      href="/favicon.svg"
       media="(prefers-color-scheme: dark)"
       rel="icon"
       type="image/svg+xml"
@@ -57,9 +57,9 @@ import { PUBLIC_APP_NAME } from "astro:env/client";
   <body
     class="relative flex h-dvh w-dvw flex-col items-center justify-center overflow-hidden"
   >
-     <ThemeProvider client:only="react">
-        <slot />
-        <Toaster client:idle />
-      </ThemeProvider>
+    <ThemeProvider client:only="react">
+      <slot />
+      <Toaster client:idle />
+    </ThemeProvider>
   </body>
 </html>

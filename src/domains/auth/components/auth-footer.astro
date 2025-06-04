@@ -1,0 +1,22 @@
+---
+import { cn } from "@/core/lib/cn";
+import { buttonVariants } from "@/core/ui/button";
+import { Muted } from "@/core/ui/typography";
+import type { ComponentPropsWithRef } from "react";
+
+interface Props extends ComponentPropsWithRef<typeof Muted> {}
+
+const { className, ...props } = Astro.props;
+---
+
+<Muted className={cn("max-w-xs text-center", className)} {...props}>
+  By continuing, you agree to our <a
+    href="/terms"
+    class={buttonVariants({ variant: "link", size: "sm" })}
+  >
+    terms & conditions
+  </a> and
+  <a href="/privacy" class={buttonVariants({ variant: "link", size: "sm" })}>
+    privacy policy
+  </a>
+</Muted>
