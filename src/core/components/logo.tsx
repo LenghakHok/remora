@@ -8,7 +8,7 @@ export function Logo({ className, ...props }: ComponentPropsWithRef<"a">) {
     <a
       className={cn(
         buttonVariants({ size: "icon", variant: "ghost" }),
-        "size-fit [&_svg:not([class*='size-'])]:size-12",
+        "size-fit rounded-xl [&_svg:not([class*='size-'])]:size-12",
         className,
       )}
       href="/"
