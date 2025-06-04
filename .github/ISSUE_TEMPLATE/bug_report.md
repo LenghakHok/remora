@@ -11,6 +11,7 @@ assignees: LenghakHok
 
 Provide a concise summary of the bug.
 
+
 ## 📋 Steps to Reproduce
 
 List the steps to reproduce the behavior:
@@ -19,9 +20,11 @@ List the steps to reproduce the behavior:
 2. Click on '...'
 3. Observe '...'
 
+
 ## ⚡ Expected Behavior
 
 Describe what you expected to happen.
+
 
 ## 🛠️ Technical Context
 
@@ -29,12 +32,15 @@ Describe what you expected to happen.
 - **Relevant Logs/Error Messages**: (Paste stack traces, logs, etc.)
 - **Related Code Sections**: (Links or filenames)
 
+
 ## 🔥 Priority and Severity
 
 - **Priority**: High / Medium / Low
 - **Severity**: Critical / Major / Minor
 
+
 ## 🧠 Proposed Investigation or Fix
+
 
 ## ✅ Definition of Done
 
