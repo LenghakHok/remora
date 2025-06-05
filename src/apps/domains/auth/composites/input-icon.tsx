@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithRef } from "react";
 
-import { cn } from "@/core/lib/cn";
-import { Input } from "@/core/ui/input";
+import { cn } from "~@/lib/cn";
+import { Input } from "~@/ui/input";
 
 type Props = ComponentPropsWithRef<typeof Input> & {
   icon: LucideIcon;

@@ -1,20 +1,20 @@
 ---
-import { Logo } from "@/core/components/logo";
-import { cn } from "@/core/lib/cn";
-import { buttonVariants } from "@/core/ui/button";
+import AuthCardContent from "@@/domains/auth/components/auth-card-content.astro";
+import AuthCardFooter from "@@/domains/auth/components/auth-card-footer.astro";
+import AuthCard from "@@/domains/auth/components/auth-card.astro";
+import AuthLayout from "@@/domains/auth/layouts/auth-layout.astro";
+import { OAuthForm } from "@@/domains/auth/modules/oauth-form";
+import { PUBLIC_APP_NAME } from "astro:env/client";
+import { Logo } from "~@/components/logo";
+import { cn } from "~@/lib/cn";
+import { buttonVariants } from "~@/ui/button";
 import {
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/core/ui/card";
-import { Muted } from "@/core/ui/typography";
-import AuthCardContent from "@/domains/auth/components/auth-card-content.astro";
-import AuthCardFooter from "@/domains/auth/components/auth-card-footer.astro";
-import AuthCard from "@/domains/auth/components/auth-card.astro";
-import AuthLayout from "@/domains/auth/layouts/auth-layout.astro";
-import { OAuthForm } from "@/domains/auth/modules/oauth-form";
-import { PUBLIC_APP_NAME } from "astro:env/client";
+} from "~@/ui/card";
+import { Muted } from "~@/ui/typography";
 ---
 
 <AuthLayout>

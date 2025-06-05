@@ -1,7 +1,7 @@
-import { docs } from "@/core/lib/auth-config";
 import { auth } from "@/server/auth";
 import { swagger } from "@elysiajs/swagger";
 import { Elysia } from "elysia";
+import { docs } from "~@/lib/auth-config";
 
 const app = new Elysia({ prefix: "/api" }).use(auth).use(
   swagger({

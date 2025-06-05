@@ -1,6 +1,16 @@
-import { authClient } from "@/core/lib/auth-client";
-import { Button } from "@/core/ui/button";
-import { Checkbox } from "@/core/ui/checkbox";
+import { InputIcon } from "@@/domains/auth/composites/input-icon";
+import { InputPassword } from "@@/domains/auth/composites/input-password";
+import {
+  signUpRequestSchema,
+  type SignUpRequest,
+} from "@@/domains/auth/pipes/sign-up.pipe";
+import { valibotResolver } from "@hookform/resolvers/valibot";
+import { AtSignIcon, UserIcon } from "lucide-react";
+import { useCallback } from "react";
+import { useForm } from "react-hook-form";
+import { authClient } from "~@/lib/auth-client";
+import { Button } from "~@/ui/button";
+import { Checkbox } from "~@/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -8,17 +18,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/core/ui/form";
-import { InputIcon } from "@/domains/auth/composites/input-icon";
-import { InputPassword } from "@/domains/auth/composites/input-password";
-import {
-  signUpRequestSchema,
-  type SignUpRequest,
-} from "@/domains/auth/pipes/sign-up.pipe";
-import { valibotResolver } from "@hookform/resolvers/valibot";
-import { AtSignIcon, UserIcon } from "lucide-react";
-import { useCallback } from "react";
-import { useForm } from "react-hook-form";
+} from "~@/ui/form";
 
 export function SignUpForm() {
   const form = useForm<SignUpRequest>({

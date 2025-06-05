@@ -1,5 +1,5 @@
-import { cn } from "@/core/lib/cn";
 import type { ComponentPropsWithRef } from "react";
+import { cn } from "~@/lib/cn";
 
 export function Kbd({
   className,

@@ -1,10 +1,10 @@
-import { cn } from "@/core/lib/cn";
 import React, {
   type ComponentPropsWithoutRef,
   useEffect,
   useRef,
   useState,
 } from "react";
+import { cn } from "~@/lib/cn";
 
 interface MousePosition {
   x: number;

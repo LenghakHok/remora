@@ -1,7 +1,7 @@
-import { Logo } from "@/core/components/logo";
-import { cn } from "@/core/lib/cn";
-import { Separator } from "@/core/ui/separator";
 import type { ComponentPropsWithRef } from "react";
+import { Logo } from "~@/components/logo";
+import { cn } from "~@/lib/cn";
+import { Separator } from "~@/ui/separator";
 
 export function Navigation({
   className,

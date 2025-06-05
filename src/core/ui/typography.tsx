@@ -1,5 +1,5 @@
-import { cn } from "@/core/lib/cn";
 import React, { forwardRef, memo } from "react";
+import { cn } from "~@/lib/cn";
 
 // Reusable helper to create components with consistent structure
 const createComponent = <T extends HTMLElement>(
