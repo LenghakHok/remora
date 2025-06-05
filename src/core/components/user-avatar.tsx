@@ -1,7 +1,7 @@
-import type { authClient } from "@/core/lib/auth-client";
-import { cn } from "@/core/lib/cn";
-import { Avatar, AvatarFallback, AvatarImage } from "@/core/ui/avatar";
 import type { ComponentPropsWithRef } from "react";
+import type { authClient } from "~@/lib/auth-client";
+import { cn } from "~@/lib/cn";
+import { Avatar, AvatarFallback, AvatarImage } from "~@/ui/avatar";
 
 interface Props extends ComponentPropsWithRef<typeof Avatar> {
   user: Partial<typeof authClient.$Infer.Session.user>;

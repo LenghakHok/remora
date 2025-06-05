@@ -1,5 +1,3 @@
-import { cn } from "@/core/lib/cn";
-import { Button, buttonVariants } from "@/core/ui/button";
 import { differenceInCalendarDays } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
@@ -10,6 +8,8 @@ import {
   useDayPicker,
   type DayPickerProps,
 } from "react-day-picker";
+import { cn } from "~@/lib/cn";
+import { Button, buttonVariants } from "~@/ui/button";
 
 export type CalendarProps = DayPickerProps & {
   /**

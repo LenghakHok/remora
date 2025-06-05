@@ -1,7 +1,7 @@
-import { theme$ } from "@/core/context/theme-store";
 import { observer } from "@legendapp/state/react";
 import type React from "react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
+import { theme$ } from "~@/context/theme-store";
 
 export const Toaster = observer(({ ...props }: ToasterProps) => {
   return (

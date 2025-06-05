@@ -1,19 +1,19 @@
 import {
   oAuthRequestSchema,
   type OAuthRequest,
-} from "@/apps/auth/pipes/oauth.pipe";
-import { DiscordIcon } from "@/core/icons/discord";
-import { GithubIcon } from "@/core/icons/github";
-import { GoogleIcon } from "@/core/icons/google";
-import { authClient } from "@/core/lib/auth-client";
-import { cn } from "@/core/lib/cn";
-import { Button } from "@/core/ui/button";
-import { Form as FormProvider } from "@/core/ui/form";
-import { For } from "@/core/utils/for";
-import { If } from "@/core/utils/if";
+} from "@@/domains/auth/pipes/oauth.pipe";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useCallback, type ComponentPropsWithRef } from "react";
 import { useForm } from "react-hook-form";
+import { DiscordIcon } from "~@/icons/discord";
+import { GithubIcon } from "~@/icons/github";
+import { GoogleIcon } from "~@/icons/google";
+import { authClient } from "~@/lib/auth-client";
+import { cn } from "~@/lib/cn";
+import { Button } from "~@/ui/button";
+import { Form as FormProvider } from "~@/ui/form";
+import { For } from "~@/utils/for";
+import { If } from "~@/utils/if";
 
 interface Props extends ComponentPropsWithRef<"form"> {
   callbackURL?: string;

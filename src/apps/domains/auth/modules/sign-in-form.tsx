@@ -1,7 +1,7 @@
-import { InputIcon } from "@/apps/auth/composites/input-icon";
-import { InputPassword } from "@/apps/auth/composites/input-password";
-import { Button, buttonVariants } from "@/core/ui/button";
-import { Checkbox } from "@/core/ui/checkbox";
+import { InputIcon } from "@@/domains/auth/composites/input-icon";
+import { InputPassword } from "@@/domains/auth/composites/input-password";
+import { Button, buttonVariants } from "~@/ui/button";
+import { Checkbox } from "~@/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -9,18 +9,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/core/ui/form";
+} from "~@/ui/form";
 
 import {
   signInRequestSchema,
   type SignInRequest,
-} from "@/apps/auth/pipes/sign-in.pipe";
-import { authClient } from "@/core/lib/auth-client";
-import { cn } from "@/core/lib/cn";
+} from "@@/domains/auth/pipes/sign-in.pipe";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { AtSignIcon } from "lucide-react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
+import { authClient } from "~@/lib/auth-client";
+import { cn } from "~@/lib/cn";
 
 export function SignInForm() {
   const form = useForm({

@@ -2,7 +2,7 @@ import { Command as CommandPrimitive } from "cmdk";
 import { CommandIcon } from "lucide-react";
 import React from "react";
 
-import { cn } from "@/core/lib/cn";
+import { cn } from "~@/lib/cn";
 import {
   Dialog,
   DialogClose,
@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/core/ui/dialog";
+} from "~@/ui/dialog";
 import { Kbd } from "./kbd";
 import { Muted } from "./typography";
 

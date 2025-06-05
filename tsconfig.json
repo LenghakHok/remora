@@ -5,7 +5,8 @@
     "jsxImportSource": "react",
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./*"]
+      "@@/*": ["./src/apps/*"],
+      "~@/*": ["./src/core/*"]
     },
     "skipLibCheck": true,
     "strict": true,

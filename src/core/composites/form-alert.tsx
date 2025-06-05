@@ -1,7 +1,7 @@
-import { cn } from "@/core/lib/cn";
-import { Alert, AlertDescription } from "@/core/ui/alert";
 import { AlertCircleIcon } from "lucide-react";
 import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "~@/lib/cn";
+import { Alert, AlertDescription } from "~@/ui/alert";
 
 interface Props extends ComponentPropsWithRef<typeof Alert> {
   message: ReactNode;

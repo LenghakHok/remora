@@ -1,6 +1,3 @@
-import { cn } from "@/core/lib/cn";
-import { Button } from "@/core/ui/button";
-import { Input } from "@/core/ui/input";
 import { EyeClosedIcon, EyeIcon, KeyIcon } from "lucide-react";
 import {
   useCallback,
@@ -8,6 +5,9 @@ import {
   useState,
   type ComponentPropsWithRef,
 } from "react";
+import { cn } from "~@/lib/cn";
+import { Button } from "~@/ui/button";
+import { Input } from "~@/ui/input";
 
 export function InputPassword({
   className,

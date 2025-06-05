@@ -1,7 +1,7 @@
-import { BrandIcon } from "@/core/icons/brand";
-import { cn } from "@/core/lib/cn";
-import { buttonVariants } from "@/core/ui/button";
 import type { ComponentPropsWithRef } from "react";
+import { BrandIcon } from "~@/icons/brand";
+import { cn } from "~@/lib/cn";
+import { buttonVariants } from "~@/ui/button";
 
 export function Logo({ className, ...props }: ComponentPropsWithRef<"a">) {
   return (

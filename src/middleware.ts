@@ -1,5 +1,5 @@
-import { auth as betterAuth } from "@/core/lib/auth-config";
 import { defineMiddleware, sequence } from "astro:middleware";
+import { auth as betterAuth } from "~@/lib/auth-config";
 
 const ignored = ["/", "/api", "/svg"];
 

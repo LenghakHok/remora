@@ -1,7 +1,7 @@
 import { Tabs as TabsPrimitive } from "@base-ui-components/react/tabs";
 import React from "react";
 
-import { cn } from "@/core/lib/cn";
+import { cn } from "~@/lib/cn";
 
 interface TabsProps extends React.ComponentProps<typeof TabsPrimitive.Root> {
   variant?: "underline" | "default";

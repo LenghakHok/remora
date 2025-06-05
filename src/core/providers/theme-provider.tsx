@@ -1,6 +1,6 @@
-import { resolvedTheme$, theme$ } from "@/core/context/theme-store";
 import { observer, useObserveEffect } from "@legendapp/state/react";
 import type { PropsWithChildren } from "react";
+import { resolvedTheme$, theme$ } from "~@/context/theme-store";
 
 export const ThemeProvider = observer(({ children }: PropsWithChildren) => {
   useObserveEffect(() => {

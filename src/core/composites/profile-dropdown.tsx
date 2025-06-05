@@ -1,24 +1,24 @@
 // UI Components
-import { UserAvatar } from "@/core/components/user-avatar";
-import { buttonVariants } from "@/core/ui/button";
+import { UserAvatar } from "~@/components/user-avatar";
+import { buttonVariants } from "~@/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/core/ui/dropdown-menu";
-import { Muted } from "@/core/ui/typography";
+} from "~@/ui/dropdown-menu";
+import { Muted } from "~@/ui/typography";
 
 // Icons
 import { LogOutIcon, UserIcon } from "lucide-react";
 
 // Utils & Hooks
-import { cn } from "@/core/lib/cn";
 import { useCallback, type ComponentPropsWithRef } from "react";
+import { cn } from "~@/lib/cn";
 
 // Services & State
-import { authClient } from "@/core/lib/auth-client";
+import { authClient } from "~@/lib/auth-client";
 
 // Types
 interface UserAvatarProps extends ComponentPropsWithRef<typeof UserAvatar> {}

@@ -1,6 +1,6 @@
 // Root component
-import { cn } from "@/core/lib/cn";
 import type { ComponentPropsWithRef } from "react";
+import { cn } from "~@/lib/cn";
 
 interface StateRootProps extends ComponentPropsWithRef<"section"> {}
 
@@ -51,7 +51,7 @@ export function StateTitle({ className, children, ...props }: StateTitleProps) {
 }
 
 // Description component
-import type { Muted } from "@/core/ui/typography";
+import type { Muted } from "~@/ui/typography";
 
 interface StateDescriptionProps extends ComponentPropsWithRef<typeof Muted> {}
 

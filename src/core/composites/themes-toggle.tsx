@@ -1,15 +1,15 @@
-import { theme$ } from "@/core/context/theme-store";
-import { cn } from "@/core/lib/cn";
-import { Button } from "@/core/ui/button";
+import { observer } from "@legendapp/state/react";
+import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
+import type { ComponentPropsWithRef } from "react";
+import { theme$ } from "~@/context/theme-store";
+import { cn } from "~@/lib/cn";
+import { Button } from "~@/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/core/ui/dropdown-menu";
-import { observer } from "@legendapp/state/react";
-import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
-import type { ComponentPropsWithRef } from "react";
+} from "~@/ui/dropdown-menu";
 
 export const ThemesToggle = observer(
   ({ className, ...props }: ComponentPropsWithRef<typeof Button>) => {
