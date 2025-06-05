@@ -1,0 +1,14 @@
+---
+import RootLayout from "~@/layouts/root-layout.astro";
+---
+
+<RootLayout>
+  <section class="flex h-full w-full flex-row items-start justify-center">
+    <!-- Sidebar -->
+    <slot name="aside" />
+    <!-- Main Content -->
+    <main class="flex h-full w-full flex-row gap-4 p-2">
+      <slot />
+    </main>
+  </section>
+</RootLayout>

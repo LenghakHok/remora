@@ -25,7 +25,11 @@ const auth = defineMiddleware(async (context, next) => {
   }
 
   if (context.originPathname.startsWith("/auth") && session !== null) {
-    return context.redirect("/");
+    return context.redirect("/home");
+  }
+
+  if (context.originPathname === "/" && session !== null) {
+    return context.redirect("/home");
   }
 
   return next();

@@ -3,7 +3,6 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
-import unpluginTypia from "@ryoppippi/unplugin-typia/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 
@@ -11,19 +10,7 @@ import { defineConfig, envField } from "astro/config";
 export default defineConfig({
   integrations: [react()],
   vite: {
-    plugins: [
-      // @ts-ignore
-      tailwindcss(),
-      // @ts-ignore
-      unpluginTypia({
-        cache: false,
-        typia: {
-          functional: true,
-          finite: true,
-          undefined: true,
-        },
-      }),
-    ],
+    plugins: [tailwindcss()],
   },
   trailingSlash: "ignore",
   output: "server",

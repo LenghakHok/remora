@@ -5,6 +5,7 @@ import { ClientRouter } from "astro:transitions";
 import { ThemeProvider } from "~@/providers/theme-provider";
 import { Toaster } from "~@/ui/sonner";
 import { PUBLIC_APP_NAME } from "astro:env/client";
+import { Favicon } from "~@/components/favicon";
 ---
 
 <script is:inline>
@@ -45,11 +46,12 @@ import { PUBLIC_APP_NAME } from "astro:env/client";
       rel="stylesheet"
     />
     <link
-      href="/favicon.svg"
+      href="/svg/favicon.svg"
       media="(prefers-color-scheme: dark)"
       rel="icon"
       type="image/svg+xml"
     />
+    <Favicon />
     <title>{PUBLIC_APP_NAME}</title>
 
     <ClientRouter />
