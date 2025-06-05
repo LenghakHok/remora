@@ -1,5 +1,5 @@
+import { theme$ } from "@/core/context/theme-store";
 import { cn } from "@/core/lib/cn";
-import { theme$ } from "@/core/stores/theme-store";
 import { Button } from "@/core/ui/button";
 import {
   DropdownMenu,

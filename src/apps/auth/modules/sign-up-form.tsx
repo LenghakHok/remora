@@ -1,3 +1,9 @@
+import { InputIcon } from "@/apps/auth/composites/input-icon";
+import { InputPassword } from "@/apps/auth/composites/input-password";
+import {
+  signUpRequestSchema,
+  type SignUpRequest,
+} from "@/apps/auth/pipes/sign-up.pipe";
 import { authClient } from "@/core/lib/auth-client";
 import { Button } from "@/core/ui/button";
 import { Checkbox } from "@/core/ui/checkbox";
@@ -9,12 +15,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/core/ui/form";
-import { InputIcon } from "@/domains/auth/composites/input-icon";
-import { InputPassword } from "@/domains/auth/composites/input-password";
-import {
-  signUpRequestSchema,
-  type SignUpRequest,
-} from "@/domains/auth/pipes/sign-up.pipe";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { AtSignIcon, UserIcon } from "lucide-react";
 import { useCallback } from "react";

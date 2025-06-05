@@ -1,4 +1,4 @@
-import { resolvedTheme$, theme$ } from "@/core/stores/theme-store";
+import { resolvedTheme$, theme$ } from "@/core/context/theme-store";
 import { observer, useObserveEffect } from "@legendapp/state/react";
 import type { PropsWithChildren } from "react";
 

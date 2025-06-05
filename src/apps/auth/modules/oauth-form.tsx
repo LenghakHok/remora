@@ -1,3 +1,7 @@
+import {
+  oAuthRequestSchema,
+  type OAuthRequest,
+} from "@/apps/auth/pipes/oauth.pipe";
 import { DiscordIcon } from "@/core/icons/discord";
 import { GithubIcon } from "@/core/icons/github";
 import { GoogleIcon } from "@/core/icons/google";
@@ -7,10 +11,6 @@ import { Button } from "@/core/ui/button";
 import { Form as FormProvider } from "@/core/ui/form";
 import { For } from "@/core/utils/for";
 import { If } from "@/core/utils/if";
-import {
-  oAuthRequestSchema,
-  type OAuthRequest,
-} from "@/domains/auth/pipes/oauth.pipe";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useCallback, type ComponentPropsWithRef } from "react";
 import { useForm } from "react-hook-form";

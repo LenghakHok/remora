@@ -1,4 +1,4 @@
-import { theme$ } from "@/core/stores/theme-store";
+import { theme$ } from "@/core/context/theme-store";
 import { observer } from "@legendapp/state/react";
 import type React from "react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";

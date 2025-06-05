@@ -1,8 +1,8 @@
 ---
+import AuthFooter from "@/apps/auth/components/auth-footer.astro";
 import RootLayout from "@/core/layouts/root-layout.astro";
 import { cn } from "@/core/lib/cn";
 import type { HTMLAttributes } from "astro/types";
-import AuthFooter from "../components/auth-footer.astro";
 interface Props extends HTMLAttributes<"main"> {}
 
 const { class: className, ...props } = Astro.props;
