@@ -1,5 +1,4 @@
 ---
-import { Card } from "@/core/ui/card";
 import HomeLayout from "@@/domains/home/layouts/home-layout.astro";
 import { HomeSidebar } from "@@/domains/home/modules/home-sidebar";
 
@@ -8,6 +7,4 @@ const pathname = Astro.originPathname;
 
 <HomeLayout>
   <HomeSidebar pathname={pathname} slot="aside" client:load />
-
-  <Card className="w-xs min-h-full" />
 </HomeLayout>
