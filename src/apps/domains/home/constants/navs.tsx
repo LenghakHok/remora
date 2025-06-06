@@ -2,17 +2,22 @@ import { ChartBarFill } from "@/core/icons/chart-bar-fill";
 import { FoldersFill } from "@/core/icons/folders-fill";
 import { Home4Fill } from "@/core/icons/home-4-fill";
 import { Inbox2Fill } from "@/core/icons/inbox-2-fill";
-import { Message1Fill } from "@/core/icons/message-1-fill";
-import { NotificationFill } from "@/core/icons/notification-fill";
 import { Plugin2Fill } from "@/core/icons/plugin-2-fill";
-import { SafeShield2Fill } from "@/core/icons/safe-shield-2-fill";
 import { Search3FillIcon } from "@/core/icons/search-3-fill";
 import { Settings3Fill } from "@/core/icons/settings-3-fill";
-import { UserSecurityFill } from "@/core/icons/user-security-fill";
+import { ServiceFill } from "@/core/icons/support-fill";
+import type { JSX } from "react";
 
-export const navs = [
+export const navs: {
+  label: string;
+  navs: {
+    title: string;
+    icon: JSX.Element;
+    href: string;
+  }[];
+}[] = [
   {
-    label: "General",
+    label: "General" as const,
     navs: [
       {
         title: "Home",
@@ -34,22 +39,7 @@ export const navs = [
         icon: <Search3FillIcon />,
         href: "/search",
       },
-    ],
-  },
 
-  {
-    label: "Integrations",
-    navs: [
-      {
-        title: "Apps",
-        icon: <Plugin2Fill />,
-        href: "/apps",
-      },
-      {
-        title: "Agents",
-        icon: <Message1Fill />,
-        href: "/agent",
-      },
       {
         title: "Reports",
         icon: <FoldersFill />,
@@ -59,7 +49,18 @@ export const navs = [
   },
 
   {
-    label: "Settings",
+    label: "Integrations" as const,
+    navs: [
+      {
+        title: "Integrations",
+        icon: <Plugin2Fill />,
+        href: "/integrations",
+      },
+    ],
+  },
+
+  {
+    label: "Settings" as const,
     navs: [
       {
         title: "General",
@@ -67,19 +68,9 @@ export const navs = [
         href: "/settings",
       },
       {
-        title: "Security",
-        icon: <SafeShield2Fill />,
+        title: "Help & Support",
+        icon: <ServiceFill />,
         href: "/security",
-      },
-      {
-        title: "Account",
-        icon: <UserSecurityFill />,
-        href: "/account",
-      },
-      {
-        title: "Notifications",
-        icon: <NotificationFill />,
-        href: "/notifications",
       },
     ],
   },

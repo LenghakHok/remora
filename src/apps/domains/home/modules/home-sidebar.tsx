@@ -3,11 +3,11 @@ import { cn } from "@/core/lib/cn";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -27,9 +27,9 @@ export function HomeSidebar({
   ...props
 }: HomeSidebarProps) {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="max-w-64">
       <Sidebar
-        className={cn("group-data-[side=left]:border-r-0", className)}
+        className={cn("max-w-64 group-data-[side=left]:border-r-0", className)}
         collapsible="icon"
         {...props}
       >
@@ -42,10 +42,15 @@ export function HomeSidebar({
             each={navs}
             render={(group) => (
               <SidebarGroup
-                className="px-4"
+                className="group px-4 last-of-type:mt-auto last-of-type:flex-col-reverse"
                 key={JSON.stringify(group)}
               >
-                <SidebarGroupLabel className="text-muted-foreground uppercase tracking-widest">
+                <SidebarGroupLabel
+                  className={cn(
+                    "text-muted-foreground uppercase tracking-widest",
+                    group.label === "Settings" ? "hidden" : "",
+                  )}
+                >
                   {group.label}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
@@ -56,7 +61,7 @@ export function HomeSidebar({
                         <SidebarMenuItem key={JSON.stringify(nav)}>
                           <SidebarMenuButton
                             asChild={true}
-                            className="gap-4"
+                            className="gap-4 px-3"
                           >
                             <a
                               className="[&_svg]:text-muted-foreground"
@@ -75,8 +80,8 @@ export function HomeSidebar({
             )}
           />
         </SidebarContent>
+        <SidebarFooter />
       </Sidebar>
-      <SidebarInset />
     </SidebarProvider>
   );
 }
