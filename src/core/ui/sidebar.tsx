@@ -1,6 +1,8 @@
+import { useStore } from "@nanostores/react";
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
+import { atom, computed } from "nanostores";
 import React from "react";
 
 import { useIsMobile } from "~@/hooks/use-mobile";
@@ -28,27 +30,84 @@ const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
-// const _SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
-type SidebarContextProps = {
-  state: "expanded" | "collapsed";
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  openMobile: boolean;
-  setOpenMobile: (open: boolean) => void;
-  isMobile: boolean;
-  toggleSidebar: () => void;
+// Nanostores
+export const $sidebarOpen = atom<boolean>(true);
+export const $sidebarOpenMobile = atom<boolean>(false);
+export const $sidebarIsMobile = atom<boolean>(false);
+
+export const $sidebarState = computed([$sidebarOpen], (open) =>
+  open ? "expanded" : "collapsed",
+);
+
+// Actions
+export const sidebarActions = {
+  setOpen: (open: boolean) => {
+    $sidebarOpen.set(open);
+    // Set cookie to persist sidebar state
+    if (typeof document !== "undefined") {
+      // biome-ignore lint/nursery/noDocumentCookie: <explanation>
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+    }
+  },
+
+  setOpenMobile: (open: boolean) => {
+    $sidebarOpenMobile.set(open);
+  },
+
+  setIsMobile: (isMobile: boolean) => {
+    $sidebarIsMobile.set(isMobile);
+  },
+
+  toggle: () => {
+    const isMobile = $sidebarIsMobile.get();
+    if (isMobile) {
+      sidebarActions.setOpenMobile(!$sidebarOpenMobile.get());
+    } else {
+      sidebarActions.setOpen(!$sidebarOpen.get());
+    }
+  },
+
+  initialize: (defaultOpen = true) => {
+    // Initialize from cookie if available
+    if (typeof document !== "undefined") {
+      const cookieValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${SIDEBAR_COOKIE_NAME}=`))
+        ?.split("=")[1];
+
+      if (cookieValue !== undefined) {
+        $sidebarOpen.set(cookieValue === "true");
+      } else {
+        $sidebarOpen.set(defaultOpen);
+      }
+    } else {
+      $sidebarOpen.set(defaultOpen);
+    }
+  },
 };
 
-const SidebarContext = React.createContext<SidebarContextProps | null>(null);
-
+// Custom hook to use sidebar stores
 function useSidebar() {
-  const context = React.useContext(SidebarContext);
-  if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider.");
-  }
+  const open = useStore($sidebarOpen);
+  const openMobile = useStore($sidebarOpenMobile);
+  const state = useStore($sidebarState);
+  const isMobile = useIsMobile();
 
-  return context;
+  // Update mobile state when it changes
+  React.useEffect(() => {
+    sidebarActions.setIsMobile(isMobile);
+  }, [isMobile]);
+
+  return {
+    state,
+    open,
+    setOpen: sidebarActions.setOpen,
+    openMobile,
+    setOpenMobile: sidebarActions.setOpenMobile,
+    isMobile,
+    toggleSidebar: sidebarActions.toggle,
+  };
 }
 
 function SidebarProvider({
@@ -64,89 +123,52 @@ function SidebarProvider({
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }) {
-  const isMobile = useIsMobile();
-  const [openMobile, setOpenMobile] = React.useState(false);
+  // Initialize the store on mount
+  React.useEffect(() => {
+    if (openProp !== undefined) {
+      $sidebarOpen.set(openProp);
+    } else {
+      sidebarActions.initialize(defaultOpen);
+    }
+  }, [defaultOpen, openProp]);
 
-  // This is the internal state of the sidebar.
-  // We use openProp and setOpenProp for control from outside the component.
-  const [_open, _setOpen] = React.useState(defaultOpen);
-  const open = openProp ?? _open;
-  const setOpen = React.useCallback(
-    (value: boolean | ((value: boolean) => boolean)) => {
-      const openState = typeof value === "function" ? value(open) : value;
-      if (setOpenProp) {
-        setOpenProp(openState);
-      } else {
-        _setOpen(openState);
-      }
+  // Handle controlled mode
+  React.useEffect(() => {
+    if (openProp !== undefined) {
+      $sidebarOpen.set(openProp);
+    }
+  }, [openProp]);
 
-      // This sets the cookie to keep the sidebar state.
-      // biome-ignore lint/nursery/noDocumentCookie: <explanation>
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
-    },
-    [setOpenProp, open],
-  );
-
-  // Helper to toggle the sidebar.
-  const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
-  }, [isMobile, setOpen]);
-
-  // Adds a keyboard shortcut to toggle the sidebar.
-  // React.useEffect(() => {
-  //   const handleKeyDown = (event: KeyboardEvent) => {
-  //     if (
-  //       event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-  //       (event.metaKey || event.ctrlKey)
-  //     ) {
-  //       event.preventDefault();
-  //       toggleSidebar();
-  //     }
-  //   };
-
-  //   window.addEventListener("keydown", handleKeyDown);
-  //   return () => window.removeEventListener("keydown", handleKeyDown);
-  // }, [toggleSidebar]);
-
-  // We add a state so that we can do data-state="expanded" or "collapsed".
-  // This makes it easier to style the sidebar with Tailwind classes.
-  const state = open ? "expanded" : "collapsed";
-
-  const contextValue = React.useMemo<SidebarContextProps>(
-    () => ({
-      state,
-      open,
-      setOpen,
-      isMobile,
-      openMobile,
-      setOpenMobile,
-      toggleSidebar,
-    }),
-    [state, open, setOpen, isMobile, openMobile, toggleSidebar],
-  );
+  // Handle external onChange
+  React.useEffect(() => {
+    if (setOpenProp) {
+      const unsubscribe = $sidebarOpen.subscribe((newOpen) => {
+        setOpenProp(newOpen);
+      });
+      return unsubscribe;
+    }
+  }, [setOpenProp]);
 
   return (
-    <SidebarContext.Provider value={contextValue}>
-      <TooltipProvider delayDuration={0}>
-        <div
-          className={cn(
-            "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
-            className,
-          )}
-          data-slot="sidebar-wrapper"
-          style={
-            {
-              "--sidebar-width": SIDEBAR_WIDTH,
-              "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-              ...style,
-            } as React.CSSProperties
-          }
-          {...props}
-        >
-          {children}
-        </div>
-      </TooltipProvider>
-    </SidebarContext.Provider>
+    <TooltipProvider delayDuration={0}>
+      <div
+        className={cn(
+          "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
+          className,
+        )}
+        data-slot="sidebar-wrapper"
+        style={
+          {
+            "--sidebar-width": SIDEBAR_WIDTH,
+            "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+            ...style,
+          } as React.CSSProperties
+        }
+        {...props}
+      >
+        {children}
+      </div>
+    </TooltipProvider>
   );
 }
 
@@ -265,7 +287,7 @@ function SidebarTrigger({
 
   return (
     <Button
-      className={cn("size-7", className)}
+      className={cn("size-8", className)}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       onClick={(event) => {

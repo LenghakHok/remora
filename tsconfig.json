@@ -15,10 +15,5 @@
   },
   "exclude": ["dist"],
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "plugins": [
-    {
-      "transform": "typia/lib/transform"
-    }
-  ]
+  "include": [".astro/types.d.ts", "**/*"]
 }
