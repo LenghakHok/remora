@@ -1,4 +1,5 @@
 import { cn } from "@/core/lib/cn";
+import { Separator } from "@/core/ui/separator";
 import type { ComponentPropsWithRef } from "react";
 
 export function Topbar({
@@ -9,7 +10,7 @@ export function Topbar({
   return (
     <header
       className={cn(
-        "flex w-full flex-row items-center justify-start p-4 px-2",
+        "flex w-full flex-row items-center justify-between py-4",
         className,
       )}
       data-group="topbar-wrapper"
@@ -17,5 +18,36 @@ export function Topbar({
     >
       {children}
     </header>
+  );
+}
+
+export function TopbarActions({
+  className,
+  children,
+  ...props
+}: ComponentPropsWithRef<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-row items-center justify-center gap-2",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function TopbarSeparator({
+  className,
+  ...props
+}: ComponentPropsWithRef<typeof Separator>) {
+  return (
+    <Separator
+      className={cn("data-[orientation=vertical]:h-6", className)}
+      orientation="vertical"
+      {...props}
+    />
   );
 }

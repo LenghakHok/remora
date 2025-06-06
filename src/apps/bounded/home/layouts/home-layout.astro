@@ -1,5 +1,4 @@
 ---
-import { Card } from "@/core/ui/card";
 import { HomeSidebar } from "@@/bounded/home/modules/home-sidebar";
 import RootLayout from "~@/layouts/root-layout.astro";
 import { HomeTopbar } from "../modules/home-topbar";
@@ -15,15 +14,10 @@ const pathname = Astro.originPathname;
     <!-- Main Content -->
 
     <main
-      class="flex size-full flex-col items-start justify-start overflow-hidden"
+      class="relative flex size-full flex-col items-start justify-start -space-y-2 overflow-hidden p-2 pt-0"
     >
-      <HomeTopbar client:load />
-
-      <Card
-        className="relative size-full overflow-auto rounded-xl rounded-ee-none"
-      >
-        <slot />
-      </Card>
+      <HomeTopbar className="relative" client:load />
+      <slot />
     </main>
   </section>
 </RootLayout>

@@ -1,11 +1,25 @@
+import { ThemesToggle } from "@/core/composites/themes-toggle";
+import { cn } from "@/core/lib/cn";
 import { SidebarTrigger } from "@/core/ui/sidebar";
-import { Topbar } from "@@/bounded/home/components/topbar";
+import { Topbar, TopbarActions } from "@@/bounded/home/components/topbar";
 import type { ComponentPropsWithRef } from "react";
 
-export function HomeTopbar(props: ComponentPropsWithRef<typeof Topbar>) {
+export function HomeTopbar({
+  className,
+  ...props
+}: ComponentPropsWithRef<typeof Topbar>) {
   return (
-    <Topbar {...props}>
+    <Topbar
+      className={cn("pr-2", className)}
+      {...props}
+    >
       <SidebarTrigger className="text-muted-foreground" />
+      <TopbarActions>
+        <ThemesToggle
+          className="text-muted-foreground"
+          variant="ghost"
+        />
+      </TopbarActions>
     </Topbar>
   );
 }
