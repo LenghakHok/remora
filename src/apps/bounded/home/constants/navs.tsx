@@ -62,7 +62,7 @@ export const navs: {
     label: "Settings" as const,
     navs: [
       {
-        title: "General",
+        title: "Settings",
         icon: <SettingsIcon />,
         href: "/settings",
       },
