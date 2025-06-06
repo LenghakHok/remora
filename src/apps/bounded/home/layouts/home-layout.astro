@@ -1,18 +1,29 @@
 ---
+import { Card } from "@/core/ui/card";
 import { HomeSidebar } from "@@/bounded/home/modules/home-sidebar";
 import RootLayout from "~@/layouts/root-layout.astro";
+import { HomeTopbar } from "../modules/home-topbar";
 
 const pathname = Astro.originPathname;
 ---
 
 <RootLayout>
-  <section class="flex h-full w-full flex-row items-start justify-center">
+  <section class="flex h-full w-full flex-row items-center justify-center">
     <!-- Sidebar -->
     <HomeSidebar pathname={pathname} client:load />
 
     <!-- Main Content -->
-    <main class="flex h-full w-full flex-row gap-4 p-2">
-      <slot />
+
+    <main
+      class="flex size-full flex-col items-start justify-start overflow-hidden"
+    >
+      <HomeTopbar client:load />
+
+      <Card
+        className="relative size-full overflow-auto rounded-xl rounded-ee-none"
+      >
+        <slot />
+      </Card>
     </main>
   </section>
 </RootLayout>
