@@ -1,10 +1,5 @@
 ---
-import HomeLayout from "@@/domains/home/layouts/home-layout.astro";
-import { HomeSidebar } from "@@/domains/home/modules/home-sidebar";
-
-const pathname = Astro.originPathname;
+import HomeLayout from "@@/bounded/home/layouts/home-layout.astro";
 ---
 
-<HomeLayout>
-  <HomeSidebar pathname={pathname} slot="aside" client:load />
-</HomeLayout>
+<HomeLayout />

@@ -1,13 +1,17 @@
 ---
+import { HomeSidebar } from "@@/bounded/home/modules/home-sidebar";
 import RootLayout from "~@/layouts/root-layout.astro";
+
+const pathname = Astro.originPathname;
 ---
 
 <RootLayout>
   <section class="flex h-full w-full flex-row items-start justify-center">
     <!-- Sidebar -->
-    <slot name="aside" />
+    <HomeSidebar pathname={pathname} client:load />
+
     <!-- Main Content -->
-    <main class="bg-card flex h-full w-full flex-row gap-4 p-2">
+    <main class="flex h-full w-full flex-row gap-4 p-2">
       <slot />
     </main>
   </section>

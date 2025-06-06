@@ -1,3 +1,4 @@
+import { navs } from "@/apps/bounded/home/constants/navs";
 import { Logo } from "@/core/components/logo";
 import { cn } from "@/core/lib/cn";
 import {
@@ -14,7 +15,6 @@ import {
   SidebarProvider,
 } from "@/core/ui/sidebar";
 import { For } from "@/core/utils/for";
-import { navs } from "@@/domains/home/constants/navs";
 import type { ComponentPropsWithRef } from "react";
 
 interface HomeSidebarProps extends ComponentPropsWithRef<typeof Sidebar> {
