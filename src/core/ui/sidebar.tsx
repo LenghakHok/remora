@@ -138,7 +138,22 @@ function SidebarProvider({
       $sidebarOpen.set(openProp);
     }
   }, [openProp]);
+  // Handle controlled mode
+  React.useEffect(() => {
+    if (openProp !== undefined) {
+      $sidebarOpen.set(openProp);
+    }
+  }, [openProp]);
 
+  // Handle external onChange
+  React.useEffect(() => {
+    if (setOpenProp) {
+      const unsubscribe = $sidebarOpen.subscribe((newOpen) => {
+        setOpenProp(newOpen);
+      });
+      return unsubscribe;
+    }
+  }, [setOpenProp]);
   // Handle external onChange
   React.useEffect(() => {
     if (setOpenProp) {
