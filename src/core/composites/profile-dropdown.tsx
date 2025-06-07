@@ -95,7 +95,7 @@ export function ProfileDropdown({ user, ...props }: UserAvatarProps) {
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Settings</DropdownMenuLabel>
+          <DropdownMenuLabel className="sr-only">Settings</DropdownMenuLabel>
           <DropdownMenuItem asChild={true}>
             <a href="/settings">
               <SettingsIcon />
