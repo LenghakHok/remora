@@ -70,9 +70,13 @@ export function HomeSidebar({
                           <SidebarMenuButton
                             asChild={true}
                             className="gap-4 px-3"
+                            isActive={
+                              pathname.startsWith(nav.href) ||
+                              pathname === nav.href
+                            }
                           >
                             <a
-                              className="[&_svg]:text-muted-foreground"
+                              className="[&_svg]:text-muted-foreground data-[active=true]:[&_svg]:text-sidebar-accent-foreground"
                               href={nav.href}
                             >
                               {nav.icon}
