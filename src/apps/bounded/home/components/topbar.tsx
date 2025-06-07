@@ -29,7 +29,7 @@ export function TopbarActions({
   return (
     <div
       className={cn(
-        "flex flex-row items-center justify-center gap-2",
+        "flex flex-row items-center justify-center gap-4",
         className,
       )}
       {...props}

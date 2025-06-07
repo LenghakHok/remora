@@ -1,7 +1,7 @@
 ---
 import { HomeSidebar } from "@@/bounded/home/modules/home-sidebar";
+import HomeTopbar from "@@/bounded/home/templates/home-topbar.astro";
 import RootLayout from "~@/layouts/root-layout.astro";
-import { HomeTopbar } from "../modules/home-topbar";
 
 const pathname = Astro.originPathname;
 ---
@@ -15,7 +15,7 @@ const pathname = Astro.originPathname;
     <main
       class="relative flex size-full flex-col items-start justify-start -space-y-2 overflow-hidden p-2 pt-0"
     >
-      <HomeTopbar className="relative" client:load />
+      <HomeTopbar className="relative" />
       <slot />
     </main>
   </section>

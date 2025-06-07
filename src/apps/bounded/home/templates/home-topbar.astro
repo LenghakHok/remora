@@ -1,0 +1,35 @@
+---
+import { ProfileDropdown } from "@/core/composites/profile-dropdown";
+import { ThemesToggle } from "@/core/composites/themes-toggle";
+import { cn } from "@/core/lib/cn";
+import { SidebarTrigger } from "@/core/ui/sidebar";
+import { If } from "@/core/utils/if";
+import { Topbar, TopbarActions } from "@@/bounded/home/components/topbar";
+import { HomeCommand } from "@@/bounded/home/modules/home-command";
+import type { User } from "better-auth";
+import type { ComponentPropsWithRef } from "react";
+
+interface Props extends ComponentPropsWithRef<typeof Topbar> {}
+
+const { className, ...props } = Astro.props;
+
+const user = Astro.locals.session?.user;
+---
+
+<Topbar className={cn("relative pr-2", className)} {...props}>
+  <SidebarTrigger className="text-muted-foreground" client:load />
+
+  <HomeCommand className="absolute left-1/2 -translate-x-1/2" client:load />
+
+  <TopbarActions>
+    <ThemesToggle
+      className="text-muted-foreground"
+      variant="ghost"
+      client:load
+    />
+
+    <If isTrue={Boolean(user)} client:load>
+      <ProfileDropdown className="size-8" user={user as User} client:load />
+    </If>
+  </TopbarActions>
+</Topbar>

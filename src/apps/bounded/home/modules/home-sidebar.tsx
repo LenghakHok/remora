@@ -62,14 +62,14 @@ export function HomeSidebar({
                   {group.label}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-2">
                     <For
                       each={group.navs}
                       render={(nav) => (
                         <SidebarMenuItem key={JSON.stringify(nav)}>
                           <SidebarMenuButton
                             asChild={true}
-                            className="gap-4 px-3"
+                            className="h-fit gap-4 px-3 py-2"
                             isActive={
                               pathname.startsWith(nav.href) ||
                               pathname === nav.href

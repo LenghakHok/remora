@@ -9,7 +9,7 @@ export function Kbd({
   return (
     <kbd
       className={cn(
-        "rounded-sm border border-b-2 bg-card p-1.5 py-0.5 text-muted-foreground text-xs shadow-xs",
+        "rounded-sm border border-b-2 bg-card p-1.5 py-0.5 text-xs shadow-xs",
         className,
       )}
       {...props}

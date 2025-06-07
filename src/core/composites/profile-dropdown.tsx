@@ -6,12 +6,21 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~@/ui/dropdown-menu";
 import { Muted } from "~@/ui/typography";
 
 // Icons
-import { LogOutIcon, UserIcon } from "lucide-react";
+import {
+  LogOutIcon,
+  PlusIcon,
+  Settings2Icon,
+  SettingsIcon,
+  ShieldIcon,
+  UserIcon,
+} from "lucide-react";
 
 // Utils & Hooks
 import { useCallback, type ComponentPropsWithRef } from "react";
@@ -60,7 +69,7 @@ export function ProfileDropdown({ user, ...props }: UserAvatarProps) {
       <DropdownMenuTrigger
         className={cn(
           buttonVariants({ variant: "ghost", size: "icon" }),
-          "size-fit rounded-full",
+          "rounded-full",
         )}
       >
         <UserAvatar
@@ -71,37 +80,60 @@ export function ProfileDropdown({ user, ...props }: UserAvatarProps) {
 
       <DropdownMenuContent
         align="end"
-        className="-mr-2 mt-4 min-w-xs"
+        className="mt-2 min-w-48 space-y-2"
       >
         {/* User Profile Section */}
-        <DropdownMenuGroup className="p-1">
-          <div className="justify-end-safe flex flex-col items-center gap-4 p-2">
-            <ProfileDisplay
-              className="w-full"
-              user={user}
-            />
+        <DropdownMenuGroup>
+          <DropdownMenuItem asChild={true}>
+            <a href="/profile">
+              <UserIcon />
+              <span>Profile</span>
+            </a>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
 
-            <div className="justify-end-safe flex w-full flex-row items-center gap-2">
-              <DropdownMenuItem
-                asChild={true}
-                className="w-full justify-center border border-b-4 shadow-xs active:border-b"
-              >
-                <a href="/profile">
-                  <UserIcon />
-                  <span>Profile</span>
-                </a>
-              </DropdownMenuItem>
+        <DropdownMenuSeparator />
 
-              <DropdownMenuItem
-                className="w-full justify-center border border-b-4 shadow-xs active:border-b"
-                onClick={handleSignOut}
-                variant="destructive"
-              >
-                <LogOutIcon />
-                <span>Sign Out</span>
-              </DropdownMenuItem>
-            </div>
-          </div>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Settings</DropdownMenuLabel>
+          <DropdownMenuItem asChild={true}>
+            <a href="/settings">
+              <SettingsIcon />
+              <span>General</span>
+            </a>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem asChild={true}>
+            <a href="/settings/preferences">
+              <Settings2Icon />
+              <span>Preferences</span>
+            </a>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem asChild={true}>
+            <a href="/settings/account">
+              <ShieldIcon />
+              <span>Account</span>
+            </a>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup className="mt-2">
+          <DropdownMenuItem>
+            <PlusIcon />
+            <span>Add account</span>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="font-bold"
+            onClick={handleSignOut}
+            variant="destructive"
+          >
+            <LogOutIcon />
+            <span>Sign Out</span>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
