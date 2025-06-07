@@ -124,7 +124,7 @@ function SidebarProvider({
   onOpenChange?: (open: boolean) => void;
 }) {
   // Initialize the store on mount
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (openProp !== undefined) {
       $sidebarOpen.set(openProp);
     } else {

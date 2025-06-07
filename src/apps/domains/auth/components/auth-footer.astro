@@ -12,11 +12,14 @@ const { className, ...props } = Astro.props;
 <Muted className={cn("max-w-xs text-center", className)} {...props}>
   By continuing, you agree to our <a
     href="/terms"
-    class={buttonVariants({ variant: "link", size: "sm" })}
+    class={cn(buttonVariants({ variant: "link", size: "sm" }), "font-bold")}
   >
     terms & conditions
   </a> and
-  <a href="/privacy" class={buttonVariants({ variant: "link", size: "sm" })}>
+  <a
+    href="/privacy"
+    class={cn(buttonVariants({ variant: "link", size: "sm" }), "font-bold")}
+  >
     privacy policy
   </a>
 </Muted>
